@@ -1,10 +1,8 @@
 from flask import Flask, Response
-from flask import request
+from flask import request, redirect, url_for, render_template
 from flask_cors import CORS
 import json
 import time
-
-from sqlalchemy import null
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -31,3 +29,6 @@ def get(id):
     res = {"Message": "Invalid id"}
     return Response(json.dumps(res), 400, mimetype='application/json')
   return Response(json.dumps(res), 200, mimetype='application/json')
+
+if __name__ == "__main__":
+  app.run()
