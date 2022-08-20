@@ -1,6 +1,7 @@
 from flask import Flask, Response
 from flask import request
 from flask_cors import CORS
+from model import *
 import json
 import time
 
@@ -18,6 +19,7 @@ def index():
 def post():
     global id
     data = json.loads(request.data)
+    
     db[id] = data;
     id += 1
     return Response("Creado", 200)

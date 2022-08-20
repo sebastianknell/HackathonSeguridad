@@ -8,11 +8,11 @@ class BaseModel(Model):
         database = database
 
 class Rol(BaseModel):
-    id = IntegerField(unique=True)
+    id = IntegerField(primary_key=True)
     description = CharField()
   
 class User(BaseModel):
-    username = CharField(unique=True)
+    username = CharField(primary_key=True)
     email = CharField()
     password = CharField()
     phone = CharField()
@@ -20,10 +20,12 @@ class User(BaseModel):
     rol_id = ForeignKeyField(Rol)
 
 class Product(BaseModel):
-    id = IntegerField(unique=True)
+    id = IntegerField(primary_key=True)
     name = CharField()
     description = CharField()
     price = DecimalField(decimal_places=2)
+    stock = IntegerField()
+    user_id = ForeignKeyField(User)
 
 class Token(BaseModel):
     token = CharField(unique=True)
