@@ -29,7 +29,10 @@ class Product(BaseModel):
 
 class Token(BaseModel):
     token = CharField(unique=True)
+    user_id = ForeignKeyField(User)
 
 def create_tables():
     with database:
         database.create_tables([Rol, User, Product, Token])
+        Rol.create(id = 0, description="vendedor")
+        Rol.create(id = 1, description="comprador")
